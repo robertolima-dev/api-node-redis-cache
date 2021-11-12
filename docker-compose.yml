@@ -1,0 +1,34 @@
+services:
+
+    redis:
+        image: 'bitnami/redis:latest'
+        container_name: redis
+        environment:
+            - ALLOW_EMPTY_PASSWORD=yes
+        ports:
+            - 6379:6379
+
+    redisinsight:
+        image: 'redislabs/redisinsight:latest'
+        container_name: redisinsight
+            - redis
+        ports:
+            - 8001:8001
+        volumes:
+            - ./Users/ajeetraina/data/redisinsight:/db
+
+    api_redis:
+        container_name: api_redis
+        build:
+            context: .
+            dockerfile: Dockerfile
+        entrypoint: './entrypoint.sh'
+        restart: always
+        depends_on:
+            - redis
+        ports:
+            - 4001:4001
+            - 3001:3001
+        volumes:
+            - ./:/home/node/app
+            - /home/node/app/node_modules

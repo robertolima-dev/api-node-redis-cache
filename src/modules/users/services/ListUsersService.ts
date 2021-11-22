@@ -13,8 +13,6 @@ class ListUserService {
             users = await userRepositoy.findAll()
 
             await redisCache.save('api_redis_USERS_LIST', users);
-
-            await redisCache.expire('api_redis_USERS_LIST', 30);
         }
 
         return users;

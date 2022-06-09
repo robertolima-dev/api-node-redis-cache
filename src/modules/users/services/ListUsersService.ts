@@ -10,6 +10,7 @@ class ListUserService {
         let users = await redisCache.recover<User[]>('api_redis_USERS_LIST')
 
         if (!users) {
+
             users = await userRepositoy.findAll()
 
             await redisCache.save('api_redis_USERS_LIST', users);

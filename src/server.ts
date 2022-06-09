@@ -58,6 +58,6 @@ app.listen(port, () => {
     console.log(`Server started on port ${port}! 🏆`);
 })
 
-http.listen(socketPort, () => {
-    console.log(`Socket started on port ${socketPort}! 🏆`);
-})
+// http.listen(socketPort, () => {
+//     console.log(`Socket started on port ${socketPort}! 🏆`);
+// })

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
 import DeleteUserService from '../services/DeleteUserService';
 import ListUserService from '../services/ListUsersService';
+import ScriptToCreateUsers from '../services/ScriptToCreateUsers';
 import ShowUserService from '../services/ShowUserService';
 import UpdateUserService from '../services/UpdateUserService';
 
@@ -57,6 +58,15 @@ export default class UsersController {
         const deleteUser = new DeleteUserService();
 
         await deleteUser.execute({ id });
+
+        return response.status(204).json()
+    }
+
+    public async script(request: Request, response: Response): Promise<Response> {
+
+        const scriptStart = new ScriptToCreateUsers();
+
+        await scriptStart.execute();
 
         return response.status(204).json()
     }

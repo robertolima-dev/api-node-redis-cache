@@ -18,12 +18,8 @@ class ScriptToCreateUsers {
                 email: `robertolima.izphera+index-${i}@gmail.com`,
                 password: '123456'
             }
+            await service.execute(data)
 
-            setTimeout(async () => {
-
-                await service.execute(data)
-
-            }, 200)
         }
     }
 }

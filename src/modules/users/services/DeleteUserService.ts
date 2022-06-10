@@ -19,6 +19,7 @@ class DeleteUserService {
         }
 
         await redisCache.invalidate('api_redis_USERS_LIST')
+        await redisCache.invalidate(`api_redis_USER:${id}`)
 
         await userRepositoy.delete(id)
 

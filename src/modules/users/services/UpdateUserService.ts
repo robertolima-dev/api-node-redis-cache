@@ -17,7 +17,7 @@ class UpdateUserService {
 
         const user = await userRepositoy.findById(id)
 
-        if(!user) {
+        if (!user) {
             throw new AppError("User not found!");
         }
 
@@ -26,6 +26,7 @@ class UpdateUserService {
         }
 
         await redisCache.invalidate('api_redis_USERS_LIST')
+        await redisCache.invalidate(`api_redis_USER:${id}`)
 
         await userRepositoy.update(id, data)
 

@@ -1,4 +1,4 @@
-# API Restful com Node.js, Express, Typescript, Sequelize e Redis
+# API NodeJS com Express, Typescript, Sequelize e Redis
 
 Node versão 16.13.0
 
